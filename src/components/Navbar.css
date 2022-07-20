@@ -3,18 +3,19 @@ nav {
     justify-content: center;
     align-items: center;
     height: 50px;
-    background-color: #cd8c54;
+    background-color: #f3d2c1;
     gap: 45px;
+    border-bottom: 3px solid #001858;
 }
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: #001858;
     transition: all 0.3s;
 }
 
 nav a:hover {
-    color: cadetblue;
+    color: #616779;
 }
 
 nav a svg {

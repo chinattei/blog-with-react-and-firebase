@@ -20,7 +20,7 @@ const Home = () => {
         await deleteDoc(doc(db, 'posts', id));
         window.location.href = '/';
     };
-
+    console.log(auth);
     return (
         <div className='homePage'>
             {postList.map((post) => {
@@ -32,10 +32,19 @@ const Home = () => {
                         <div className='postTextContainer'>{post.postText}</div>
                         <div className='nameAndDeleteButton'>
                             <h3>@{post.author.username}</h3>
-                            {post.author.id === auth.currentUser.uid && (
-                                <button onClick={() => handleDelete(post.id)}>
-                                    削除
-                                </button>
+                            {auth.currentUser && (
+                                <>
+                                    {post.author.id ===
+                                        auth.currentUser.uid && (
+                                        <button
+                                            onClick={() =>
+                                                handleDelete(post.id)
+                                            }
+                                        >
+                                            削除
+                                        </button>
+                                    )}
+                                </>
                             )}
                         </div>
                     </div>

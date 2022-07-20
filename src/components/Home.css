@@ -12,8 +12,8 @@
     width: 600px;
     height: auto;
     max-height: 600px;
-    background-color: white;
-    box-shadow: 5px 9px 15px -5px #777777;
+    background-color: #f3d2c1;
+    border: 3px solid #001858;
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
@@ -22,6 +22,7 @@
 .postHeader h1 {
     text-align: center;
     margin-top: 5px;
+    color: #001858;
 }
 
 .postContents .postTextContainer {
@@ -29,6 +30,7 @@
     word-wrap: break-word;
     max-height: 400px;
     width: 100%;
+    color: #172c66;
 }
 
 .nameAndDeleteButton {
@@ -38,11 +40,12 @@
 
 .nameAndDeleteButton h3 {
     flex: 90%;
+    color: #001858;
 }
 
 .nameAndDeleteButton button {
     flex: 10%;
-    background-color: #d36262;
+    background-color: #fa5246;
     color: white;
     padding: 7px 15px;
     border-radius: 3px;
@@ -52,5 +55,5 @@
 }
 
 .nameAndDeleteButton button:hover {
-    background-color: #a43c3c;
+    background-color: #c03f36;
 }
