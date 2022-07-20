@@ -20,7 +20,6 @@ const Home = () => {
         await deleteDoc(doc(db, 'posts', id));
         window.location.href = '/';
     };
-    console.log(auth);
     return (
         <div className='homePage'>
             {postList.map((post) => {
