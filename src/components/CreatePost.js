@@ -5,21 +5,26 @@ import { auth, db } from '../firebase';
 import './CreatePost.css';
 
 const CreatePost = ({ isAuth }) => {
-    const [title, setTitle] = useState();
-    const [postText, setPostText] = useState();
+    const [title, setTitle] = useState('');
+    const [postText, setPostText] = useState('');
 
     const navigate = useNavigate();
 
     const createPost = async () => {
-        await addDoc(collection(db, 'posts'), {
-            title: title,
-            postText: postText,
-            author: {
-                username: auth.currentUser.displayName,
-                id: auth.currentUser.uid,
-            },
-        });
-        window.location.href = '/createpost';
+        if (title && postText) {
+            await addDoc(collection(db, 'posts'), {
+                title: title,
+                postText: postText,
+                author: {
+                    username: auth.currentUser.displayName,
+                    id: auth.currentUser.uid,
+                },
+            });
+            setTitle('');
+            setPostText('');
+        } else {
+            alert('文字を入力してください');
+        }
     };
 
     useEffect(() => {
@@ -34,14 +39,18 @@ const CreatePost = ({ isAuth }) => {
                 <div className='inputPost'>
                     <div>タイトル</div>
                     <input
+                        value={title}
                         type='text'
                         placeholder='タイトルを記入'
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(e) => {
+                            setTitle(e.target.value);
+                        }}
                     />
                 </div>
                 <div className='inputPost'>
                     <div>投稿</div>
                     <textarea
+                        value={postText}
                         placeholder='投稿内容を記入'
                         onChange={(e) => setPostText(e.target.value)}
                     />
